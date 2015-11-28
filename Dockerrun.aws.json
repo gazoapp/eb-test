@@ -30,6 +30,12 @@
         {
           "sourceContainer": "data"
         }
+      ],
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 80
+        }
       ]
     },
     {

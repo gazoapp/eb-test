@@ -10,17 +10,6 @@
   ],
   "containerDefinitions": [
     {
-      "name": "php",
-      "image": "gazoapp/php",
-      "essential": true,
-      "memory": 512,
-      "volumesFrom": [
-        {
-          "sourceContainer": "data"
-        }
-      ]
-    },
-    {
       "name": "data",
       "essential": true,
       "image": "gazoapp/data",
@@ -33,18 +22,29 @@
       ]
     },
     {
-      "name": "composer",
-      "image": "gazoapp/composer",
+      "name": "php",
+      "image": "gazoapp/php",
       "essential": true,
-      "memory": 256,
-      "command": [
-        "install",
-        "--prefer-source"
-      ],
+      "memory": 512,
       "volumesFrom": [
         {
           "sourceContainer": "data"
         }
+      ]
+    },
+    {
+      "name": "composer",
+      "image": "gazoapp/composer",
+      "essential": true,
+      "memory": 256,
+      "volumesFrom": [
+        {
+          "sourceContainer": "data"
+        }
+      ],
+      "command": [
+        "install",
+        "--prefer-source"
       ]
     }
   ]

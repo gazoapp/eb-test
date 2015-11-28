@@ -1,0 +1,51 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "volumes": [
+    {
+      "name": "data_volume",
+      "host": {
+        "sourcePath": "/var/app/current/"
+      }
+    }
+  ],
+  "containerDefinitions": [
+    {
+      "name": "php",
+      "image": "gazoapp/php",
+      "essential": true,
+      "memory": 512,
+      "volumesFrom": [
+        {
+          "sourceContainer": "data"
+        }
+      ]
+    },
+    {
+      "name": "data",
+      "essential": true,
+      "image": "gazoapp/data",
+      "memory": 128,
+      "mountPoints": [
+        {
+          "containerPath": "/data/www",
+          "sourceVolume": "data_volume"
+        }
+      ]
+    },
+    {
+      "name": "composer",
+      "image": "gazoapp/composer",
+      "essential": true,
+      "memory": 256,
+      "command": [
+        "install",
+        "--prefer-source"
+      ],
+      "volumesFrom": [
+        {
+          "sourceContainer": "data"
+        }
+      ]
+    }
+  ]
+}

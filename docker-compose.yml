@@ -12,3 +12,4 @@ composer:
   image: gazoapp/composer
   volumes_from:
     - data
+  command: install --prefer-source

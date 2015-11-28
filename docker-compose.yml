@@ -1,0 +1,14 @@
+data:
+  image: gazoapp/data
+  volumes:
+    - .:/data/www
+
+php:
+  image: gazoapp/php
+  volumes_from:
+    - data
+
+composer:
+  image: gazoapp/composer
+  volumes_from:
+    - data

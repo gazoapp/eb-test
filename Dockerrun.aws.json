@@ -11,7 +11,7 @@
   "containerDefinitions": [
     {
       "name": "data",
-      "essential": true,
+      "essential": false,
       "image": "gazoapp/data",
       "memory": 128,
       "mountPoints": [
@@ -35,7 +35,7 @@
     {
       "name": "composer",
       "image": "gazoapp/composer",
-      "essential": true,
+      "essential": false,
       "memory": 256,
       "volumesFrom": [
         {
@@ -44,7 +44,8 @@
       ],
       "command": [
         "install",
-        "--prefer-source"
+        "--prefer-source",
+        "--no-interaction"
       ]
     }
   ]
